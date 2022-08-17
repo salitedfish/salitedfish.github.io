@@ -1,5 +1,5 @@
 ---
 lang: zh-CN
-title: 首页
+title: Good-Look
 description: 页面的描述
 ---

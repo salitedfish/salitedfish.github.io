@@ -13,27 +13,32 @@ export default defineUserConfig({
       {
         text: "javascript",
         collapsible: true,
-        children: ["/javascript/事件循环.md"],
+        children: ["/javascript/事件循环.md", "/javascript/原型链.md"],
       },
       {
         text: "typescript",
         collapsible: true,
-        children: ["/typescript/内置工具类型.md"],
+        children: ["/typescript/内置工具类型.md", "/typescript/class相关.md"],
       },
       {
         text: "node",
         collapsible: true,
-        children: ["/node/内置模块.md"],
+        children: ["/node/内置模块.md", "/node/koa相关.md"],
       },
       {
         text: "vue",
         collapsible: true,
-        children: ["/vue/响应式原理.md"],
+        children: ["/vue/随笔.md"],
       },
       {
         text: "react",
         collapsible: true,
         children: [],
+      },
+      {
+        text: "nginx",
+        collapsible: true,
+        children: ["/nginx/随笔.md"],
       },
     ],
   }),
