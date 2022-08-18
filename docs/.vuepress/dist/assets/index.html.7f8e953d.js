@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as o,a as c}from"./app.07e95a8e.js";const a={},n=c("p",null,"emoji\u53C2\u8003\u5730\u5740\uFF1Ahttps://github.com/ikatyang/emoji-cheat-sheet",-1),s=[n];function _(i,r){return t(),o("div",null,s)}var d=e(a,[["render",_],["__file","index.html.vue"]]);export{d as default};
