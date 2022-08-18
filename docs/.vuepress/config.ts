@@ -40,6 +40,11 @@ export default defineUserConfig({
         children: ["/pinia/introduce.md"],
       },
       {
+        text: "axios",
+        collapsible: true,
+        children: ["/axios/introduce.md"],
+      },
+      {
         text: "vite",
         collapsible: true,
         children: [],
