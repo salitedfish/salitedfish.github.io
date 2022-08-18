@@ -36,6 +36,11 @@ export default defineUserConfig({
         children: [],
       },
       {
+        text: "git",
+        collapsible: true,
+        children: ["/git/workflow.md", "/git/page.md"],
+      },
+      {
         text: "nginx",
         collapsible: true,
         children: ["/nginx/随笔.md"],
