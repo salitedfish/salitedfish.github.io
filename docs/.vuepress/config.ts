@@ -28,12 +28,17 @@ export default defineUserConfig({
       {
         text: "vue",
         collapsible: true,
-        children: ["/vue/随笔.md"],
+        children: ["/vue/随笔.md", "/vue/setup_script.md"],
       },
       {
         text: "react",
         collapsible: true,
         children: [],
+      },
+      {
+        text: "pinia",
+        collapsible: true,
+        children: ["/pinia/简介.md"],
       },
       {
         text: "git",

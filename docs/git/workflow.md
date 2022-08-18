@@ -3,15 +3,23 @@ lang: zh-CN
 title: workflow
 description: 页面的描述
 ---
-### workflow简介
 
-### workflow文件存放路径
+### 简介
++ git workflow是由git action组成的工作流程。  
++ 本地仓库创建配置文件后，推送到远程仓库，远程仓库就能监听指定的触发器，从而执行一系列action。
++ 通过workflow可实现一系列自动化操作，如本地更新远程代码时，实现自动部署。
+
+### 配置文件存放路径
+配置文件路径一般在本地仓库根目录创建，再推送到远程仓库（当然也可在远程直接创建）。
 + ./github/workflow/xxx.yml  
 + ./github/workflow/xxx.yaml
-### workflow文件配置示例
-```yml
-name: docs
 
+### 配置文件示例
+```yml
+# 将出现在 GitHub 仓库的 Actions（操作）选项卡中的工作流程名称
+name: docs 
+
+# 指定此工作流程的触发器
 on:
   # 每当 push 到 main 分支时触发部署
   push:
@@ -19,10 +27,13 @@ on:
   # 手动触发部署
   workflow_dispatch:
 
+# 工作流程中运行的所有作业组合在一起
 jobs:
-  docs:
+  # 定义名为docs的工作
+  docs: 
+    # 将作业配置为在最新版本的 Ubuntu Linux 运行器上运行
     runs-on: ubuntu-latest
-
+    # 将docs作业中运行的所有步骤组合在一起
     steps:
       - uses: actions/checkout@v2
         with:

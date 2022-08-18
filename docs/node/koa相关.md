@@ -4,7 +4,11 @@ title: koa相关
 description: 页面的描述
 ---
 
-#### 使用示例
+#### 简介
++ koa主要用于在node环境下构建http请求服务器。
++ koa相比express更轻量化，同时需要自己引入所需要的插件。
+
+#### 示例
 ```ts
 const Koa = require("koa");
 const Router = require("koa-router");
