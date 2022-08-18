@@ -4,7 +4,7 @@ title: 随笔
 description: 页面的描述
 ---
 
-#### nginx配置
+### nginx配置
 ```sh
 events {
     worker_connections 104800;
@@ -40,7 +40,7 @@ http {
 }
 ```
 
-#### 静态资源配置
+### 静态资源配置
 ```sh
 server {
     gzip on;
@@ -54,6 +54,3 @@ server {
     }
 }
 ```
-#### 通信
-https传输过程同时用了三个密钥，服务端生成的公钥和私钥用来非对称加密，客户端生成的密钥用来对称加密
-https对称加密所需要的密钥，是用https非对称加密来传输的，内容数据通过密钥进行对称加密传输

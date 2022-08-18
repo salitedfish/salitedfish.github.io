@@ -1,12 +1,13 @@
 ---
 lang: zh-CN
-title: class相关
+title: class
 description: 页面的描述
 ---
-
+### 简介
 1、ts中class的使用与js区别还是比较大，不单单只是像函数只添加了类型，更是封装了一层。  
 2、ts中为class属性及方法新增了许多关键字，如abstract、private、protected、static、readonly、public，readonly和public比较简单就不说了。
 
+### 示例
 + private  
 类中带private的属性和方法，只能在当前类内访问，实例、子类及子类实例都无法访问。
 ```ts
@@ -136,7 +137,7 @@ const gxk = new GXK()
 ```
 
 + 关键词带来的this指向问题  
-如下图中，在静态方法中访问公开属性，此时say中的this其实指向的是Personal而不是实例，因此访问不到实例中的属性。同样如果是公开方法访问静态属性，也需要注意this指向问题。
+如下图中，在静态方法中访问公共属性，此时say中的this其实指向的是Personal而不是实例，因此访问不到实例中的属性。同样如果是公共方法访问静态属性，也需要注意this指向问题。
 ```ts
 class Personal {
   public language: string;

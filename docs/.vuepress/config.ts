@@ -13,22 +13,21 @@ export default defineUserConfig({
       {
         text: "javascript",
         collapsible: true,
-        children: ["/javascript/事件循环.md", "/javascript/原型链.md"],
+        children: [
+          "/javascript/ESModule.md",
+          "/javascript/event_loop.md",
+          "/javascript/prototype_chain.md",
+        ],
       },
       {
         text: "typescript",
         collapsible: true,
-        children: ["/typescript/内置工具类型.md", "/typescript/class相关.md"],
-      },
-      {
-        text: "node",
-        collapsible: true,
-        children: ["/node/内置模块.md", "/node/koa相关.md"],
+        children: ["/typescript/inside_type.md", "/typescript/class.md"],
       },
       {
         text: "vue",
         collapsible: true,
-        children: ["/vue/随笔.md", "/vue/setup_script.md"],
+        children: ["/vue/introduce.md", "/vue/setup_script.md"],
       },
       {
         text: "react",
@@ -38,17 +37,41 @@ export default defineUserConfig({
       {
         text: "pinia",
         collapsible: true,
-        children: ["/pinia/简介.md"],
+        children: ["/pinia/introduce.md"],
+      },
+      {
+        text: "vite",
+        collapsible: true,
+        children: [],
+      },
+      {
+        text: "webpack",
+        collapsible: true,
+        children: [],
+      },
+      {
+        text: "node",
+        collapsible: true,
+        children: [
+          "/node/commonjs.md",
+          "/node/inside_module.md",
+          "/node/koa.md",
+        ],
       },
       {
         text: "git",
         collapsible: true,
-        children: ["/git/workflow.md", "/git/page.md"],
+        children: ["/git/command.md", "/git/workflow.md", "/git/page.md"],
       },
       {
         text: "nginx",
         collapsible: true,
-        children: ["/nginx/随笔.md"],
+        children: ["/nginx/introduce.md"],
+      },
+      {
+        text: "linux",
+        collapsible: true,
+        children: ["/linux/introduce.md", "/linux/front_deploy.md"],
       },
     ],
   }),
