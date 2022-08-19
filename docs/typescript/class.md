@@ -11,9 +11,10 @@ description: 页面的描述
 + private  
 类中带private的属性和方法，只能在当前类内访问，实例、子类及子类实例都无法访问。
 ```ts
-class Person {
+class Person<T extends any> {
   private language: string;
-  constructor() {
+  constructor(name: T) {
+    console.log(name)
     this.language = "chinese";
   }
   private say() {}
@@ -22,7 +23,7 @@ class Person {
   }
 }
 
-const person = new Person();
+const person = new Person<string>("gxk");
 person.language; //err: 属性“language”为私有属性，只能在类“Person”中访问
 person.say(); //err: 属性“say”为私有属性，只能在类“Person”中访问
 

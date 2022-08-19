@@ -1,8 +1,9 @@
 {
 	"scripts": {
 		"prepare": "husky install",
-		"docs:dev": "vuepress dev docs",
-		"docs:build": "vuepress build docs"
+		"update:sidebar": "ts-node ./docs/.vuepress/updateSideBar.ts",
+		"docs:dev": "pnpm run update:sidebar && vuepress dev docs",
+		"docs:build": "pnpm run update:sidebar && vuepress build docs"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.0.3",

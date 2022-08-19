@@ -89,3 +89,29 @@ const b = ref<number>(a);
 a.value = 3;
 b.value = 2;
 ```
+
+#### reactive中的proxy
+```ts
+const target = {
+  name: "gxk",
+  sex: "man",
+};
+
+const reactive = <T extends object>(target: T) => {
+  const targetProxy = new Proxy<T>(target, {
+    get: (target, key) => {
+      // todo: track
+      return Reflect.get(target, key);
+    },
+    set: (target, key, value) => {
+      // todo: trigger
+      return Reflect.set(target, key, value);
+    },
+  });
+  return targetProxy;
+};
+
+const targetProxy = reactive(target);
+
+targetProxy.name = "gxh"
+```

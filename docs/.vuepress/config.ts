@@ -1,5 +1,10 @@
 import { defineUserConfig, defaultTheme } from "vuepress"
 import { searchPlugin } from "@vuepress/plugin-search"
+import fs from "fs"
+import path from "path"
+
+const currentPath = path.resolve(__dirname, "./sideBar.ts")
+const sideBar = JSON.parse(fs.readFileSync(currentPath, "utf-8"))
 
 export default defineUserConfig({
   lang: "zh-CN",
@@ -9,76 +14,7 @@ export default defineUserConfig({
   theme: defaultTheme({
     logo: "/img/logo.jpg",
     navbar: [],
-    sidebar: [
-      {
-        text: "javascript",
-        collapsible: true,
-        children: [
-          "/javascript/ESModule.md",
-          "/javascript/event_loop.md",
-          "/javascript/prototype_chain.md",
-        ],
-      },
-      {
-        text: "typescript",
-        collapsible: true,
-        children: ["/typescript/inside_type.md", "/typescript/class.md"],
-      },
-      {
-        text: "vue",
-        collapsible: true,
-        children: ["/vue/introduce.md", "/vue/setup_script.md"],
-      },
-      {
-        text: "react",
-        collapsible: true,
-        children: [],
-      },
-      {
-        text: "pinia",
-        collapsible: true,
-        children: ["/pinia/introduce.md"],
-      },
-      {
-        text: "axios",
-        collapsible: true,
-        children: ["/axios/introduce.md"],
-      },
-      {
-        text: "vite",
-        collapsible: true,
-        children: [],
-      },
-      {
-        text: "webpack",
-        collapsible: true,
-        children: [],
-      },
-      {
-        text: "node",
-        collapsible: true,
-        children: [
-          "/node/commonjs.md",
-          "/node/inside_module.md",
-          "/node/koa.md",
-        ],
-      },
-      {
-        text: "git",
-        collapsible: true,
-        children: ["/git/command.md", "/git/workflow.md", "/git/page.md"],
-      },
-      {
-        text: "nginx",
-        collapsible: true,
-        children: ["/nginx/introduce.md"],
-      },
-      {
-        text: "linux",
-        collapsible: true,
-        children: ["/linux/introduce.md", "/linux/front_deploy.md"],
-      },
-    ],
+    sidebar: sideBar,
   }),
   plugins: [searchPlugin({})],
 })
