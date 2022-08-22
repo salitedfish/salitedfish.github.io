@@ -5,7 +5,7 @@ description: 页面的描述
 ---
 
 ### 简介
-+ gitpage是通过github提供的服务器来部署的静态页面。
++ git page是通过github提供的服务器来部署的静态页面。
 + 将index.html放在git仓库指定目录中，就能通过特定地址访问该页面（默认为https://%username%.github.io/）。
 
 ### 配置示例

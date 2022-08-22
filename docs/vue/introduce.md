@@ -19,12 +19,18 @@ render函数执行或使用reactive或者readonly或者shallowReadonly时，才�
 6、ref、computed和reactive、readonly等保存依赖的方式不同，前者是每个包装对象都有个set结构的dep属性，存储着依赖。而后者则保存在一个全局的weakMap上，结构如下：
 ```ts
 // 引用类型的依赖保存结构：key为属性名，target为对象，dep为依赖实例
+// WeakMap { Map { Set，Set }, Map { Set, Set} }
+// 比如说reactive({name: "gxk", brother: {name: "gxh"}})，target就是{name: "gxk"}，key就是name
 { 
   target => { key => { dep, dep }，key => { dep, dep } }, 
   target => { key => { dep, dep } } 
 }
+{ 
+  {name: "gxk"} => { name => { dep, dep }, brother => { dep, dep } }, 
+  {name: "gxh"} => { name => { dep, dep } } 
+}
 ```
-更新时通过target和key来获取到对应的set结构依赖。（这里如果依赖的是对象中的对象，则会递归调用reactive，所以第一层weakMap中的target可能是其他target属性的值）
+更新时通过target和key来获取到对应的set结构依赖。（proxy只会代理第一层，所以当对象的属性值是对象时，则会递归调用reactive，所以第一层weakMap中的target可能是其他target属性的值）
 
 7、vue3之所以用weakMap是，如果用map:
 ```ts

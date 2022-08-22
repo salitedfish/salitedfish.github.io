@@ -6,6 +6,13 @@ import path from "path"
 const currentPath = path.resolve(__dirname, "./sideBar.ts")
 const sideBar = JSON.parse(fs.readFileSync(currentPath, "utf-8"))
 
+const navBar = [
+  {
+    text: "首页",
+    link: "/",
+  },
+]
+
 export default defineUserConfig({
   lang: "zh-CN",
   title: "Good-Look",
@@ -13,7 +20,7 @@ export default defineUserConfig({
   head: [["link", { rel: "icon", href: "/img/favicon.ico" }]],
   theme: defaultTheme({
     logo: "/img/logo.jpg",
-    navbar: [],
+    navbar: navBar,
     sidebar: sideBar,
   }),
   plugins: [searchPlugin({})],
