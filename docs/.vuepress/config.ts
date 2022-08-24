@@ -11,6 +11,23 @@ const navBar = [
     text: "首页",
     link: "/",
   },
+  {
+    text: "github地址",
+    link: "https://github.com/salitedfish/salitedfish.github.io",
+  },
+  {
+    text: "学习网站",
+    children: [
+      {
+        text: "coderSheep学习网站",
+        link: "https://www.r2coding.com/#/",
+      },
+      {
+        text: "emoji参考地址",
+        link: "https://github.com/ikatyang/emoji-cheat-sheet",
+      },
+    ],
+  },
 ]
 
 export default defineUserConfig({
@@ -21,7 +38,7 @@ export default defineUserConfig({
   theme: defaultTheme({
     logo: "/img/logo.jpg",
     navbar: navBar,
-    sidebar: sideBar,
+    sidebar: ["/README.md", ...sideBar],
   }),
   plugins: [searchPlugin({})],
 })

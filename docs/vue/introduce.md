@@ -26,11 +26,35 @@ render函数执行或使用reactive或者readonly或者shallowReadonly时，才�
   target => { key => { dep, dep } } 
 }
 { 
-  {name: "gxk"} => { name => { dep, dep }, brother => { dep, dep } }, 
+  {name: "gxk"} => { name => { dep, dep }, brother => { dep, dep } }, // 之所以brother还要加依赖，我猜是有可能把brother整个赋值成其他
   {name: "gxh"} => { name => { dep, dep } } 
 }
 ```
 更新时通过target和key来获取到对应的set结构依赖。（proxy只会代理第一层，所以当对象的属性值是对象时，则会递归调用reactive，所以第一层weakMap中的target可能是其他target属性的值）
+```ts
+const target = {
+  name: "gxk",
+  brother: {
+    name: "gxh",
+  },
+};
+const targetProxy = new Proxy(target, {
+  get(target, key) {
+    // todo track
+    // 如果获取到的是对象，则再调用代理操作reactive
+    return Reflect.get(target, key);
+  },
+  set(target, key, value) {
+    console.log(Reflect.get(target, key, value));
+    // todo trigger
+    return Reflect.set(target, key, value);
+  },
+});
+setInterval(() => {
+  targetProxy.brother.name = "gxh"; //这里一层proxy是监听不到的
+  targetProxy.name = "gxh"; //这里一层proxy可以监听到
+}, 1000);
+```
 
 7、vue3之所以用weakMap是，如果用map:
 ```ts
