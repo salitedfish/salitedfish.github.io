@@ -4,7 +4,8 @@ title: 配置
 description: 页面的描述
 ---
 
-### 示例
+#### 示例
+具体查看官网[vite](https://vitejs.cn/)
 ```ts
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";

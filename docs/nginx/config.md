@@ -4,7 +4,7 @@ title: 配置
 description: 页面的描述
 ---
 
-### nginx配置
+#### nginx配置
 ```sh
 events {
     worker_connections 104800;
@@ -40,7 +40,7 @@ http {
 }
 ```
 
-### 静态资源配置
+#### 静态资源配置
 ```sh
 server {
     listen 80;

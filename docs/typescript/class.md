@@ -3,11 +3,12 @@ lang: zh-CN
 title: class
 description: 页面的描述
 ---
-### 简介
+
+#### 简介
 1、ts中class的使用与js区别还是比较大，不单单只是像函数只添加了类型，更是封装了一层。  
 2、ts中为class属性及方法新增了许多关键字，如abstract、private、protected、static、readonly、public，readonly和public比较简单就不说了。
 
-### 示例
+#### 示例
 + private  
 类中带private的属性和方法，只能在当前类内访问，实例、子类及子类实例都无法访问。
 ```ts

@@ -4,17 +4,17 @@ title: workflow
 description: 页面的描述
 ---
 
-### 简介
+#### 简介
 + git workflow是由git action组成的工作流程。  
 + 本地仓库创建配置文件后，推送到远程仓库，远程仓库就能监听指定的触发器，从而执行一系列action。
 + 通过workflow可实现一系列自动化操作，如本地更新远程代码时，实现自动部署。
 
-### 配置存放路径
+#### 配置存放路径
 配置文件路径一般在本地仓库根目录创建，再推送到远程仓库（当然也可在远程直接创建）。
 + ./github/workflow/xxx.yml  
 + ./github/workflow/xxx.yaml
 
-### 配置示例
+#### 配置示例
 ```yml
 # 将出现在 GitHub 仓库的 Actions（操作）选项卡中的工作流程名称
 name: docs 
@@ -78,5 +78,4 @@ jobs:
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 ```

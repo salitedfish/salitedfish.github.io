@@ -1,34 +1,12 @@
 import { defineUserConfig, defaultTheme } from "vuepress"
 import { searchPlugin } from "@vuepress/plugin-search"
+import { navBar } from "./navBar"
 import fs from "fs"
 import path from "path"
 
+/**左侧导航栏自动生成 */
 const currentPath = path.resolve(__dirname, "./sideBar.ts")
 const sideBar = JSON.parse(fs.readFileSync(currentPath, "utf-8"))
-
-const navBar = [
-  {
-    text: "首页",
-    link: "/",
-  },
-  {
-    text: "github地址",
-    link: "https://github.com/salitedfish/salitedfish.github.io",
-  },
-  {
-    text: "学习网站",
-    children: [
-      {
-        text: "coderSheep学习网站",
-        link: "https://www.r2coding.com/#/",
-      },
-      {
-        text: "emoji参考地址",
-        link: "https://github.com/ikatyang/emoji-cheat-sheet",
-      },
-    ],
-  },
-]
 
 export default defineUserConfig({
   lang: "zh-CN",

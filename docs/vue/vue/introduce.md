@@ -64,10 +64,10 @@ genMap.set(a, 1)
 ```
 上述代码map中用了a当作键，此时如果把a设为null，垃圾回收机制并不会回收{a:1}这个内存，因为map中还引用着，然后用户永远也无法访问到这个内存（没有及时释放，造成内存泄漏。栈与堆指针没了，如果是数组，那么对象是作为值保存，那么数组内的key与对象的指针还在，所以数组不会有影响），也无法回收。而weakMap中的key是弱引用，不会被垃圾回收机制清除标记，外部如果没有这个对象的引用，则对象就会被回收掉。
 
-8、vue的父子组件执行顺序
-加载：父beforeCreated ->父created ->父beforeMounted ->子beforeCreated ->子created ->子beforeMounted ->子mounted -> 父mounted
-更新：父beforeUpdate->子beforeUpdate->子updated->父updated
-销毁：父beforeDestroy->子beforeDestroy->子destroyed->父destroyed
+8、vue的父子组件执行顺序  
+加载：父beforeCreated ->父created ->父beforeMounted ->子beforeCreated ->子created ->子beforeMounted ->子mounted -> 父mounted  
+更新：父beforeUpdate->子beforeUpdate->子updated->父updated  
+销毁：父beforeDestroy->子beforeDestroy->子destroyed->父destroyed  
 
 #### Ref和ref的简单实现
 ```ts
@@ -131,7 +131,11 @@ const reactive = <T extends object>(target: T) => {
   const targetProxy = new Proxy<T>(target, {
     get: (target, key) => {
       // todo: track
-      return Reflect.get(target, key);
+      if(typeof Reflect.get(target, key) === "object") {
+        return reactive(Reflect.get(target, key))
+      } else {
+        return Reflect.get(target, key);
+      }
     },
     set: (target, key, value) => {
       // todo: trigger

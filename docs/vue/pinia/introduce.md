@@ -4,12 +4,12 @@ title: 简介
 description: 页面的描述
 ---
 
-### 简介
+#### 简介
 + vuex5:wink:
 + 支持typescript
 + 可以像在setup里面一样写代码
 
-### 示例
+#### 示例
 + 安装pinia
 ```ts
 //main.ts

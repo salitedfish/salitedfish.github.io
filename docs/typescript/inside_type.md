@@ -4,7 +4,7 @@ title: 内置工具类型
 description: 页面的描述
 ---
 
-#### ts内置工具类型
+##### ts内置工具类型
 
 + Pick
 ```ts

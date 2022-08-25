@@ -4,11 +4,11 @@ title: ES模块化
 description: 页面的描述
 ---
 
-### 简介
+#### 简介
 + 编译时静态导入，导入后不可修改导入的值(但是对象里的值还是可以改的)。
 + import需写在文件最开头。
-+ 得益于ESModule能够通过import静态分析导入了哪些模块，从而能够实现treesharking。
-### 示例
++ 得益于ESModule能够通过import静态分析导入了哪些模块，从而能够实现[treeSharking](/vite/treeSharking.md)。
+#### 示例
 ```ts
 //manModule.ts
 export const name = "gxk"
