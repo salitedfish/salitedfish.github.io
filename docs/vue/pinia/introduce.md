@@ -1,6 +1,6 @@
 ---
 lang: zh-CN
-title: 简介
+title: 用法
 description: 页面的描述
 ---
 
