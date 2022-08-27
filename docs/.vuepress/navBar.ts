@@ -102,4 +102,21 @@ export const navBar = [
       },
     ],
   },
+  {
+    text: "工具箱",
+    children: [
+      {
+        text: "在线工具箱",
+        link: "https://tool.lu/?t=1600534926",
+      },
+      {
+        text: "时间戳转换工具",
+        link: "https://tool.lu/timestamp/",
+      },
+      {
+        text: "色值转换工具",
+        link: "https://tool.lu/color/",
+      },
+    ],
+  },
 ]

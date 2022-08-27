@@ -11,17 +11,17 @@ description: 页面的描述
 + script:async  
 1、浏览器立即异步下载文件，下载完成会立即执行，此时会阻塞dom渲染，所以async的script最好不要操作dom。因为是下载完立即执行，不能保证多个加载时的先后顺序
 + link:preload  
-1、浏览器提前加载指定资源<span style="color:#3eaf7c">(加载后并不执行)</span>，需要执行时再执行  
-2、打包工具一般会给第三方库、app的js、css包添加preload
+1、会在父chunk下载时一起下载<span style="color:#3eaf7c">(加载后并不执行)</span>，需要执行时再执行  
+2、打包工具如(vue-cli，webpack需要自己配)一般会给第三方库、app的js、css包添加preload
 + link:prefetch  
 1、资源将会在未来某个导航或者功能要用到，但是本资源的下载顺序权重比较低  
 2、prefetch通常用于加速下一次导航，而不是本次的  
 3、被标记为prefetch的资源，将会被浏览器在<span style="color:#3eaf7c">空闲时间加载</span>  
-4、打包工具一般会给相关的js、css包添加prefetch  
+4、打包工具如(vue-cli，webpack需要自己配)一般会给相关的js、css包添加prefetch  
 <br/>
 ![](../assets/img/link_params.png)
 #### 组件懒加载
-1、vue中配合异步组件和import引入组件  
+1、vue中配合异步组件和import引入组件，其实vue路由和组件懒加载的原理都是监听到事件后再去加载对应的代码  
 2、打包工具会将组件单独打包，只有当需要时才会加载  
 3、缺点是当用户点击后再去加载，需要单独发起请求，要耗费一些时间。这时候就需要配合[js加载优化](./optimization.md#js加载优化)一起处理，比如使用prefetch，等浏览器空闲时自动加载组件
 #### Web Worker
