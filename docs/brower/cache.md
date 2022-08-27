@@ -5,11 +5,11 @@ description: 页面的描述
 ---
 
 #### localstorage
-+ 单域名最大<span style="color:#3eaf7c">5M</span>
++ 单域名在2.5M到10M，chrome为<span style="color:#3eaf7c">5M</span>
 + 除非手动删除，否则不失效
 
 #### sessionstorage
-+ 单域名最大<span style="color:#3eaf7c">5M</span>
++ 单域名在2.5M到10M，chrome为<span style="color:#3eaf7c">5M</span>
 + 页面关闭则失效
 
 #### cookie
@@ -24,3 +24,12 @@ description: 页面的描述
 2.手动清除Cookie
 
 #### indexDB
++ 浏览器提供的本地数据库
++ 可以用js创建和查找
++ 不支持sql查询
++ 操作为异步的
++ 支持事务(事务中一步失败，整个事务取消，数据库回滚)
++ 存在同源限制，只能访问自身域名下的数据库
++ 空间视硬盘大小而定
++ 支持二进制数据(ArrayBuffer和Blob)  
+[阮一峰indexDB博客](https://www.ruanyifeng.com/blog/2018/07/indexeddb.html)

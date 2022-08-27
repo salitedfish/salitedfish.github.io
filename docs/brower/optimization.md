@@ -40,6 +40,22 @@ description: 页面的描述
 #### gzip压缩
 1、gzip压缩需要nginx配置开启gzip，打包的时候也要打包gzip包，打包工具可以进行配置  
 2、缺点是由于开启gzip需要压缩本地文件，因此会增加打包时间
+```ts
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import compressPlugin from "vite-plugin-compression";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    compressPlugin({
+      ext: ".gz",
+      deleteOriginFile: false,
+    }),
+  ],
+});
+```
 #### 按需引入
 引入第三方模块时按需引入模块，打包工具会进行[treeSharking](/vite/treeSharking.md)，减小打包体积
 #### 代码压缩
