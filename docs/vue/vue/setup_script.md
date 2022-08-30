@@ -39,3 +39,28 @@ props.name;
 
 </script>
 ```
+
+#### 在style中使用响应式数据
++ vue3新增的功能，响应式数据在template和style中都能使用
+```vue
+<script lang="ts" setup>
+import { reactive } from "vue";
+
+const test = reactive({ color: "#333" });
+const changeColor = () => {
+  test.color = test.color === "#333" ? "#fff" : "#333";
+};
+</script>
+
+<template>
+  <div id="threeScene" @click="changeColor"></div>
+</template>
+
+<style scoped lang="less">
+#threeScene {
+  width: 100vw;
+  height: 100vh;
+  background-color: v-bind("test.color");
+}
+</style>
+```
