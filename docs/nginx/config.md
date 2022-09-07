@@ -67,7 +67,7 @@ server {
         
         location / {
             index index.html;
-            try_files $uri $uri/ /index.html;
+            try_files $uri $uri/ /index.html; // 解决history模式下访问没匹配到路径404问题
             if ($request_filename ~* .*.(html|htm)$)
             {
                expires -1s;
