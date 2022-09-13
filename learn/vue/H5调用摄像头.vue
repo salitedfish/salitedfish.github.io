@@ -15,10 +15,13 @@
         airplay="allow"
         style="object-fit: fill"
         muted="true"
+        preload="auto"
       ></video>
     </div>
 
-    <van-button type="primary" @click="onTakePhoto" class="photo-btn">拍照</van-button>
+    <van-button type="primary" @click="onTakePhoto" class="photo-btn"
+      >拍照</van-button
+    >
   </div>
 </template>
 
@@ -38,60 +41,79 @@ export default {
       videoWidth: 375,
       /**获取设备像素比 */
       devicePixelRatio: Math.floor(window.devicePixelRatio),
-    };
+    }
   },
   mounted() {
     /**开局获取一下页面宽度 */
-    const width = window.getComputedStyle(document.getElementsByClassName("ar-page")[0]).getPropertyValue("width");
+    const width = window
+      .getComputedStyle(document.getElementsByClassName("ar-page")[0])
+      .getPropertyValue("width")
     if (navigator.userAgent.toLowerCase().match(/huawei/i) == "huawei") {
-      this.videoWidth = width.slice(0, -2) * this.devicePixelRatio * 2;
+      this.videoWidth = width.slice(0, -2) * this.devicePixelRatio * 2
     } else {
-      this.videoWidth = width.slice(0, -2) * this.devicePixelRatio;
+      this.videoWidth = width.slice(0, -2) * this.devicePixelRatio
     }
-    if ((navigator.mediaDevices && navigator.mediaDevices.getUserMedia) || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia) {
+    if (
+      (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) ||
+      navigator.getUserMedia ||
+      navigator.webkitGetUserMedia ||
+      navigator.mozGetUserMedia
+    ) {
       //调用用户媒体设备，访问摄像头
       this.initVideo({
         video: {
           width: this.videoWidth,
           facingMode: "environment",
         },
-      });
+      })
     } else {
-      this.$toast("你的浏览器不支持访问用户媒体设备");
-      this.$emit("onerror", "你的浏览器不支持访问用户媒体设备");
+      this.$toast("你的浏览器不支持访问用户媒体设备")
+      this.$emit("onerror", "你的浏览器不支持访问用户媒体设备")
     }
   },
   methods: {
     initVideo(constrains) {
-      let _this = this;
+      let _this = this
       if (navigator.mediaDevices.getUserMedia) {
         //最新标准API
-        navigator.mediaDevices.getUserMedia(constrains).then(_this.videoSuccess).catch(_this.videoError);
+        navigator.mediaDevices
+          .getUserMedia(constrains)
+          .then(_this.videoSuccess)
+          .catch(_this.videoError)
       } else if (navigator.webkitGetUserMedia) {
         //webkit内核浏览器
-        navigator.webkitGetUserMedia(constrains).then(_this.videoSuccess).catch(_this.videoError);
+        navigator
+          .webkitGetUserMedia(constrains)
+          .then(_this.videoSuccess)
+          .catch(_this.videoError)
       } else if (navigator.mozGetUserMedia) {
         //Firefox浏览器
-        navigator.mozGetUserMedia(constrains).then(_this.videoSuccess).catch(_this.videoError);
+        navigator
+          .mozGetUserMedia(constrains)
+          .then(_this.videoSuccess)
+          .catch(_this.videoError)
       } else if (navigator.getUserMedia) {
         //旧版API
-        navigator.getUserMedia(constrains).then(_this.videoSuccess).catch(_this.videoError);
+        navigator
+          .getUserMedia(constrains)
+          .then(_this.videoSuccess)
+          .catch(_this.videoError)
       }
     },
     videoSuccess(stream) {
-      let video = document.getElementById("ar-video");
+      let video = document.getElementById("ar-video")
 
       if ("srcObject" in video) {
-        video.srcObject = stream;
+        video.srcObject = stream
       } else {
-        video.src = window.URL.createObjectURL(stream);
+        video.src = window.URL.createObjectURL(stream)
       }
     },
     onTakePhoto() {
-      console.log("拍照");
+      console.log("拍照")
     },
   },
-};
+}
 </script>
 
 <style scoped lang="less">

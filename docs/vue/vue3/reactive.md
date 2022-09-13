@@ -88,7 +88,7 @@ export class ReactiveEffect<T = any> {
 ```
 
 ### Ref
-+ 包装成一个对象，对象中有dep、get value、set value
++ 包装成一个对象，对象中有dep、访问器属性get value、set value
 + 在render时，如果使用到此Ref会创建一个effect提供给此Ref收集
 ![](../../assets/img/ref_process.png)
 ```ts
@@ -103,12 +103,12 @@ class RefImpl<T> {
     this._rawValue = __v_isShallow ? value : toRaw(value)
     this._value = __v_isShallow ? value : toReactive(value)
   }
-
+  // getter访问器
   get value() {
     trackRefValue(this)
     return this._value
   }
-
+  // setter访问器
   set value(newVal) {
     newVal = this.__v_isShallow ? newVal : toRaw(newVal)
     if (hasChanged(newVal, this._rawValue)) {
