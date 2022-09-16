@@ -35,7 +35,7 @@ export const com = () => {
         console.log("list",list)
       }, 1000) 
     })
-  }, [])// 如果不写依赖，并且useEffect内改动了数据的指针，则useEffect和组件函数会无限执行
+  }, [])// 如果不写依赖，并且useEffect内改动了数据的指针，则useEffect和组件函数会无限执行，空数组则只有首次执行
 
   useEffect(() => {
     console.log(list) // 这样写当list指针改变时，获取到的是[123]
