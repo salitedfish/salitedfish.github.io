@@ -1,6 +1,6 @@
 ---
 lang: zh-CN
-title: 社区开源项目
+title: VUE社区开源项目
 description: 页面的描述
 ---
 
