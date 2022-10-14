@@ -6,7 +6,7 @@ description: 页面的描述
 
 ### 思维导图
 
-![](../../assets//img/open_source_project.jpg)
+![](../../assets/img/open_source_project.jpg)
 
 ### 1、Web UI 库
 
