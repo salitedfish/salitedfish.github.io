@@ -4,7 +4,8 @@ title: 配置
 description: 页面的描述
 ---
 
-#### nginx配置
+#### nginx 配置
+
 ```sh
 events {
     worker_connections 104800;
@@ -30,10 +31,14 @@ http {
     include               /etc/nginx/conf.d/*.conf;
     include               /etc/nginx/conf.d/*/*.conf;
 
+    # 如果打包文件本来就有gz文件则用这个就行，不需要服务器再压缩
+    gzip_static           on;
+
+    # 如果打包文件没有gz文件，则用下面这一段，由服务器自行压缩后返回给客户端
     gzip                  on;
     gzip_min_length       1k;
     gzip_buffers          4       16k;
-    gzip_comp_leval       2;
+    gzip_comp_level       2;
     gzip_types text/plain application/javascript application/css text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png
     gzip_vary             off;
     gzip_disable          "MSIE [1-6]\."
@@ -41,6 +46,7 @@ http {
 ```
 
 #### 静态资源配置
+
 ```sh
 server {
     listen 80;
@@ -64,7 +70,7 @@ server {
         ssl_prefer_server_ciphers   on;
 
         add_header Cache-Control private;
-        
+
         location / {
             index index.html;
             try_files $uri $uri/ /index.html; // 解决history模式下访问没匹配到路径404问题
@@ -98,11 +104,11 @@ server {
         }
 }
 
-upstream frontserver { 
+upstream frontserver {
     server 192.168.0.178:12009;
 }
 
-upstream customerserver { 
+upstream customerserver {
     server 192.168.0.178:8090;
 }
 ```
