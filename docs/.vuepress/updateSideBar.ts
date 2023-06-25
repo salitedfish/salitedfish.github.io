@@ -2,7 +2,7 @@
 const fs = require("fs")
 const path = require("path")
 
-const excludeFile = [".vuepress", "assets", "README.md"]
+const excludeFile = [".vuepress", "assets", "README.md", ".DS_Store"]
 
 type FileTreeItem = {
   text: string
