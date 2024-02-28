@@ -6,4 +6,6 @@ description: 页面的描述
 
 #### 基本架构
 
-![](../assets/img/electron_arch.png)
+- [官方文档](https://www.electronjs.org/zh/docs/latest/)
+
+* ![](../assets/img/electron_arch.png)

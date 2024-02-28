@@ -58,8 +58,8 @@ server {
         listen  443 ssl http2 backlog=10000;
         server_name mall.inmvo.com;
         keepalive_timeout   70;
-        root /usr/share/nginx/html/yimuFrontH5;
-        index index.html index.htm index.nginx-debian.html;
+        # root /usr/share/nginx/html/yimuFrontH5;
+        # index index.html index.htm index.nginx-debian.html;
         client_max_body_size 50M;
 
         ssl_certificate      /usr/local/nginx/cert/6314079_mall.inmvo.com.pem;
@@ -71,8 +71,9 @@ server {
 
         add_header Cache-Control private;
 
+        // 根路径访问项目
         location / {
-            index index.html;
+            root /usr/share/nginx/html/yimuFrontH5;
             try_files $uri $uri/ /index.html; // 解决history模式下访问没匹配到路径404问题
             if ($request_filename ~* .*.(html|htm)$)
             {
@@ -88,6 +89,13 @@ server {
             {
               expires 7d;
             }
+        }
+
+        // 子路径访问项目
+        // 前端设置publicPath为child_path
+        location /child_path/ {
+            alias /usr/share/nginx/html/yimuFrontH5/;
+            try_files $uri $uri/ /index.html; // 解决history模式下访问没匹配到路径404问题
         }
 
         location /root/ {
