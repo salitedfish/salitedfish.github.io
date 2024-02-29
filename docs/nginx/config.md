@@ -92,16 +92,24 @@ server {
         }
 
         // 子路径访问项目
-        // 前端设置publicPath为child_path
-        location /child_path/ {
-            alias /usr/share/nginx/html/yimuFrontH5/;
-            try_files $uri $uri/ /index.html; // 解决history模式下访问没匹配到路径404问题
+        // 前端设置publicPath为/web/，并且router也要进行相关设置
+        location /web {
+            alias /usr/share/nginx/html/web; // 结尾加不加"/"看实际测试
+            try_files $uri $uri/ /web/index.html; // 解决history模式下访问没匹配到路径404问题
+        }
+
+        // 子路径访问项目2
+        // 前端设置publicPath为/h5/，并且router也要进行相关设置
+        location /h5 {
+            alias /usr/share/nginx/html/h5; // 结尾加不加"/"看实际测试
+            try_files $uri $uri/ /h5/index.html; // 解决history模式下访问没匹配到路径404问题
         }
 
         location /root/ {
             proxy_pass http://frontserver/;
             proxy_read_timeout 86400;
         }
+
         location /chat/ {
             proxy_pass http://customerserver/;
             proxy_set_header Host $host;
