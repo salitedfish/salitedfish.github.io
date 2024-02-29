@@ -75,10 +75,10 @@ server {
             try_files $uri $uri/ /index.html; // 解决history模式下访问没匹配到路径404问题
         }
         // 子路径访问项目
-        // 前端设置publicPath为/h5/，并且router也要进行相关设置
-        location /h5 {
+        // 前端设置publicPath为/child/，并且router也要进行相关设置
+        location /child {
             root /usr/share/nginx/html; // 结尾加不加"/"看实际测试
-            try_files $uri $uri/ /h5/index.html; // 解决history模式下访问没匹配到路径404问题
+            try_files $uri $uri/ /child/index.html; // 解决history模式下访问没匹配到路径404问题
         }
 
         // 子路径访问项目1
