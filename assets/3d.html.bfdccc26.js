@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-54d4526a","path":"/canvas/3d.html","title":"3d","lang":"zh-CN","frontmatter":{"lang":"zh-CN","title":"3d","description":"\u9875\u9762\u7684\u63CF\u8FF0"},"excerpt":"","headers":[],"git":{"updatedTime":1661850050000,"contributors":[{"name":"salitedfish","email":"1525185228@qq.com","commits":1}]},"filePathRelative":"canvas/3d.md"}');export{t as data};
