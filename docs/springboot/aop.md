@@ -4,6 +4,21 @@ title: springboot切面
 description: 页面的描述
 ---
 
+# 相关注解
+
+## 类注解
+
+- @Aspect：修饰切面类，需要同时加@Compoent
+
+## 方法注解
+
+- @Before：修饰切点方法
+- @After：修饰切点方法
+- @Around：修饰切点方法
+- @AfterReturning：修饰切点方法
+- @AfterThrowing：修饰切点方法
+- @Pointcut：修饰切点方法
+
 # springboot 切面配合自定义注解使用
 
 ## 1.自定义注解

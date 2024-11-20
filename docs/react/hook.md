@@ -16,7 +16,7 @@ description: 页面的描述
 
 ```ts
 import React, { useEffect, useState } from "react"
-export const Com = () => {
+const Com = () => {
   console.log("update function")
   const [list, setList] = useState<Number[]>([])
   //setList([123]) // 不能在这里更改数据，否则会无限重新渲染
@@ -44,4 +44,6 @@ export const Com = () => {
 
   return <div></div>
 }
+
+export default Com
 ```
